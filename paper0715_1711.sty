@@ -1,0 +1,204 @@
+\documentclass[a4paper, amsfonts, amssymb, amsmath, reprint, showkeys, nofootinbib, twoside,superscriptaddress]{revtex4-1}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{comment}
+\usepackage[colorinlistoftodos, color=green!40,prependcaption]{todonotes}
+\usepackage[pdftex, pdftitle={Article}, pdfauthor={Author}]{hyperref} % For hyperlinks in the PDF
+%\setlength{\marginparwidth}{2.5cm}
+\bibliographystyle{apsrev4-1}
+\begin{document}
+\title{Quantum metric in correlated systems}
+\author{Takahiro Kashihara}
+   % \email[Correspondence email address: ]{peters@scphys.kyoto-u.ac.jp}% Your name
+\affiliation{Department of Physics, Kyoto University, Kyoto 606-8502, Japan}
+\author{Yoshihiro Michishita}
+\affiliation{RIKEN Center for Emergent Matter Science (CEMS), Wako, Saitama 351-0198, Japan}
+\author{Robert Peters}
+    \email[Correspondence email address: ]{peters@scphys.kyoto-u.ac.jp}% Your name
+\affiliation{Department of Physics, Kyoto University, Kyoto 606-8502, Japan}
+    \date{\today} % Leave empty to omit a date
+\begin{abstract}
+We show that
+\end{abstract}
+\keywords{}
+\maketitle
+\section{Introduction}
+Why do people study quantum metric?
+\section{Quantum metric in correlated systems}
+\subsection{Definition}
+\textcolor{red}{In previous studies, relationship between the integral of quantum metric over BZ (not at each point in BZ) and integral of optical conductivity in free system have been noted~\cite{resta2011insulating}.
+Taking a hint from it,}
+ we define the generalized quantum metric (GQM) by the following equation:
+\begin{eqnarray}
+&&g_{\alpha\beta}(k)=\mathrm{Re}\int d\omega_1 \frac{-1}{2\pi\omega_1^2}\int_{-\infty}^{\infty}\frac{d\omega}{2\pi}f(\omega)\\
+\label{eg}
+&&\Bigl( \mathrm{Tr}[J_\alpha(k) G^R(k,\omega+\omega_1)J_\beta (G^R(k,\omega)-G^A(k,\omega)) \\
+&&+ J_\alpha (G^R(k,\omega)-G^A(k,\omega))J_\beta G^A(k,\omega-\omega_1)] \\&&+ (\alpha\leftrightarrow\beta) \Bigr)
+\end{eqnarray}
+ $f(\omega)$ is Fermi distribution function, $J_{\alpha}=\frac{\partial H}{\partial k_\alpha}$, $J_{\beta}=\frac{\partial H}{\partial k_\beta}$ are the current operators. $G^R$ and $G^A$ are the retarded and advanced single-particle Green's functions, respectively. These single-particle Green' s functions describe the single-particle properties of a system even in the presence of correlations. They can be measured by experiments, such as angle-resolved photoemission spectroscopy or tunneling experiments.
+In free systems, Eq.(\ref{eg}) coincides with the existing definition of the quantum metric.This formula is related to the optical conductivity. If we denote the optical conductivity as
+\begin{eqnarray}
+    \sigma_{\alpha\beta}(\omega_1)&=&\displaystyle \sum_{k}\tilde{\sigma}_{\alpha\beta}(\omega_1,k) ,
+\end{eqnarray}
+then the GQM is written as
+\begin{eqnarray}
+\label{defGQM}
+g_{\alpha\beta}(k) &=& \mathrm{Re} \;\int_{0}^{\infty}d\omega_1\frac{\tilde{\sigma}_{\alpha\beta}(\omega_1,k) + \tilde{\sigma}_{\beta{\alpha}}(\omega_1,k)}{2\pi\omega_1}.
+\end{eqnarray}
+\textcolor{red}{Integrating both sides,}
+\begin{eqnarray}
+\displaystyle \sum_k g_{\alpha\beta}(k) &=& \mathrm{Re} \;\int_{0}^{\infty}d\omega_1\frac{\sigma_{\alpha\beta}(\omega_1,k) + \sigma_{\beta{\alpha}}(\omega_1,k)}{2\pi\omega_1}.
+\end{eqnarray}
+\textcolor{red}{This is the equation pointed out in ~\cite{resta2011insulating}}.
+
+Because single-particle Green's functions include correlation effects via the self-energy, this equation does not only describe free systems but also correlated systems. We note, however, that vertex corrections are ignored when expressing the optical conductivity by single-particle Green's functions.
+We will show below that Eq.(\ref{eg}) is semi positive definiteness(SPD) as necessary for a metric.
+%The important point is that GQM has semi positive definiteness(SPD).The detail of the proof is given in the next section.
+%So, GQM is real, symmetric (with respect to $\alpha$ and $\beta$) and has SPD. This is why we call GQM "Metric". 
+\subsection{Correspondence to free systems}
+First, we will show that the GQM coincides with the QM in free systems. The linear optical conductivity can be written as
+\begin{eqnarray*}
+\sigma_{\alpha\beta}(\omega_1) &=&\displaystyle \sum_{k} (-\frac{1}{\omega_1})\int \frac{d\omega}{2\pi}f(\omega)\\
+&&\times \{\mathrm{Tr}[J_{\alpha\beta}(G^R(\omega)-G^A(\omega))\\
+&&+J_\alpha G^R(\omega+\omega_1)J_\beta (G^R(\omega)-G^A(\omega))\\
+&&+J_\alpha (G^R(\omega)-G^A(\omega))J_\beta G^A(\omega-\omega_1)]\} .
+\label{sigma}
+\end{eqnarray*}
+where $\tilde{\sigma}_{\alpha\beta}(\omega_1,k)$ is integrated over the BZ.\textcolor{red}{The momentum dependence of the Green's functions and the current operators are omitted in the above equation.}
+Because the first term is generally purely imaginary, it can be ignored.
+In a free system, the Hamiltonian can be diagonalized by single-particle wave functions $\vert n\rangle$ yielding $H\vert n\rangle =E_n\vert n\rangle$.
+Using these eigenfunctions, we can write the second term as
+%In calculating the second term, it is useful to take eigen vetors of $G^R$;
+\begin{eqnarray}
+%(\mathrm{second\;term})
+ \mathrm{Tr}(J_\alpha G^R(\omega+\omega_1)J_\beta (G^R(\omega)-G^A(\omega)))&=&\\ (J_\alpha)_{nm}\frac{\delta_{ml}}{\omega + \omega_1 - E_m + i\delta}(J_\beta)_{lk}\\
+         \times (\frac{\delta_{kn}}{\omega - E_n + i\delta}-\frac{\delta_{kn}}{\omega - E_n - i\delta}))\\
+         =\frac{-2\pi i (J_\alpha)_{nm}(J_\beta)_{mn}}{\omega + \omega_1 -E_m + i\delta}\delta(\omega - E_n).
+\end{eqnarray}
+Thus,
+\begin{eqnarray}
+\int \frac{d\omega}{2\pi}f(\omega)\mathrm{Tr}(J_\alpha G^R(\omega+\omega_1)J_\beta (G^R(\omega)-G^A(\omega)))&&\\
+= -i\frac{(J_\alpha)_{nm}(J_\beta)_{mn}}{\omega_1-(E_m-E_n)+i\delta}f(E_n)
+\end{eqnarray}
+Similarly,
+\begin{eqnarray}
+ \mathrm{Tr}(J_\alpha (G^R(\omega)-G^A(\omega))J_\beta G^A(\omega-\omega_1))&&\\
+ = \frac{-2\pi i (J_\alpha)_{nm}(J_\beta)_{mn}}{\omega - \omega_1 -E_n - i\delta}\delta(\omega - E_m),
+\end{eqnarray}
+and
+\begin{eqnarray}
+\int \frac{d\omega}{2\pi}f(\omega)\mathrm{Tr}(J_\alpha (G^R(\omega)-G^A(\omega))J_\beta G^A(\omega-\omega_1))&&\\= i\frac{(J_\alpha)_{nm}(J_\beta)_{mn}}{\omega_1-(E_m-E_n)+i\delta}f(E_m)
+\end{eqnarray}
+Accordingly, we obtain
+\begin{eqnarray}
+\mathrm{Re}\quad \sigma_{\alpha\beta}(\omega_1) &= \frac{1}{\omega_1}\displaystyle \sum_k (f(E_n)-f(E_m))\\
+&\times \mathrm{Re}\frac{i(J_\alpha)_{nm}(J_\beta)_{mn}}{\omega_1-(E_m-E_n) + i\delta}
+\end{eqnarray}
+Symmetrizing this formula, we find
+\begin{eqnarray}
+\mathrm{Re}\frac{\sigma_{\alpha\beta}(\omega_1) + \sigma_{\beta \alpha}(\omega_1)}{2} =\frac{1}{2\omega_1}\displaystyle \sum_k (f(E_n)-f(E_m))\\
+\times \mathrm{Re}\frac{i((J_\alpha)_{nm}(J_\beta)_{mn}+(J_\beta )_{nm}(J_\alpha)_{mn})}{\omega_1-(E_m-E_n) + i\delta}
+\end{eqnarray}
+Because
+%\begin{eqnarray}
+$(J_\alpha)_{nm}(J_\beta)_{mn}+(J_\beta )_{nm}(J_\alpha)_{mn}$
+%\end{eqnarray}
+is real, we obtain
+%\begin{align}
+%\mathrm{Re}\frac{i((J_\alpha)_{nm}(J_\beta)_{mn}+(J_\beta )_{nm}(J_\alpha)_{mn})}{\omega_1-(E_m-E_n) + i\delta} \\
+%= ((J_\alpha)_{nm}(J_\beta)_{mn}+(J_\beta )_{nm}(J_\alpha)_{mn})\\
+%\times \mathrm{Re}\frac{i}{\omega_1-(E_m-E_n) + i\delta}
+%\end{align}
+%Using
+%\begin{eqnarray}
+%\mathrm{Re}\frac{i}{\omega_1-(E_m-E_n) + i\delta}
+%=
+%\pi \delta(\omega_1-(E_m-E_n)),
+%\end{eqnarray}
+we obtain
+\begin{eqnarray}
+\mathrm{Re}\frac{\sigma_{\alpha\beta}(\omega_1) + \sigma_{\beta \alpha}(\omega_1)}{2} =\frac{\pi}{2 \omega_1}\displaystyle \sum_k (f(E_n)-f(E_m))&&\nonumber\\ \\
+\times ((J_\alpha)_{nm}(J_\beta)_{mn}+(J_\beta )_{nm}(J_\alpha)_{mn})\delta(\omega_1-(E_m-E_n))\nonumber \\
+\end{eqnarray}
+For $T=0$, this can be written as
+\begin{eqnarray}
+\frac{\pi}{2\omega_1}\displaystyle \sum_{n:\mathrm{occupied}}\displaystyle \sum_{m:\mathrm{unoccpuied}}((J_\alpha)_{nm}(J_\beta)_{mn}+(J_\beta )_{nm}(J_\alpha)_{mn})\nonumber \\ \\
+\times [\delta(\omega_1-(E_m-E_n))-\delta(\omega_1-(E_n-E_m))]\nonumber\\
+\end{eqnarray}
+Finally, we can write the GQM as
+\begin{eqnarray}
+g_{\alpha\beta}(k) &=& \mathrm{Re} \;\int_{0}^{\infty}d\omega_1\frac{\tilde{\sigma}_{\alpha\beta}(\omega_1,k) + \tilde{\sigma}_{\beta{\alpha}}(\omega_1,k)}{2\pi\omega_1}\nonumber\\ \\
+&=& \frac{1}{2}\displaystyle \sum_{n:\mathrm{occupied}}\displaystyle \sum_{m:\mathrm{unoccpuied}} \Bigl[\frac{\langle n|\partial_\alpha H |m\rangle\langle m|\partial_\beta H |n\rangle}{(E_n-E_m)^2}\nonumber \\\\&& + (\alpha \leftrightarrow \beta)\Bigr],\nonumber \\
+\end{eqnarray}
+which agrees with the definition of the Quantum Metric in free systems.
+\subsection{Proof of semi positive definiteness}
+As a metric, the GQM must be semi positive definiteness(SPD). This must hold in interacting systems as well.
+The strategy employed here is to represent the term by $G^R-G^A$(not $G^R$ only,nor $G^A$ only). This can be done by symmetrizing with respect to $\alpha$ and $\beta$. For example, after symmetrizing equation ($\ref{eg}$),
+\begin{eqnarray}
+&&\mathrm{Re} \; \mathrm{Tr}[J_\alpha G^R(\omega+\omega_1)J_\beta (G^R-G^A) +(\alpha \leftrightarrow \beta)]\\ 
+&=&\mathrm{Re} \; \mathrm{Tr}[J_\alpha G^R(\omega+\omega_1)J_\beta (G^R-G^A) \\
+&&+ J_\beta G^R(\omega+\omega_1)J_\alpha (G^R-G^A)]\\
+&=& \mathrm{Re} \; \mathrm{Tr}[J_\alpha G^R(\omega+\omega_1)J_\beta (G^R-G^A) \\
+&&+ \{J_\beta G^R(\omega+\omega_1)J_\alpha (G^R-G^A)\}^{\dagger}]\\
+&=& \mathrm{Re} \; \mathrm{Tr}[J_\alpha G^R(\omega+\omega_1)J_\beta (G^R-G^A) \\
+&&+(G^A-G^R)J_\alpha G^A(\omega + \omega_1)J_\beta]\\
+&=& \mathrm{Re} \; \mathrm{Tr}[J_\alpha G^R(\omega+\omega_1)J_\beta (G^R-G^A)\\
+&&+J_\alpha G^A(\omega+\omega_1)J_\beta(G^A-G^R)]\quad \\
+\label{GRGA}
+&=& \mathrm{Re} \; \mathrm{Tr}[J_\alpha (G^R(\omega+\omega_1)-G^A(\omega+\omega_1))J_\beta (G^R-G^A)]\nonumber\\
+\end{eqnarray}
+Since $G^{A} = (G^{R})^{\dagger}$, $i(G^{R} - G^{A})$ is a Hermitian matrix. Thus, $i(G^{R} - G^{A})$ is diagonalizable by a unitary matrix, and the eigenvalues are real. We can diagonalize $G^{R} - G^{A}$ by using the same matrix with pure imaginary eigenvalues. We denote the eigenvetors as $|n\rangle$, and the corresponding eigenvalues as $-iA_n(A_n\in\mathbb{R})$. Note that $A_n \geq 0$ because it is the spectral function. Then, eq.($\ref{GRGA}$) is equal to 
+\begin{eqnarray}
+&& -A_n(\omega)A_m(\omega+\omega_1)\times \{\langle n(\omega)|J_\alpha|m(\omega + \omega_1)\rangle\\
+&&\times \langle m(\omega+\omega_1)|J_\beta|n(\omega)\rangle 
++ (\alpha\leftrightarrow\beta) \}/2.
+\end{eqnarray}
+For the second term in the optical conductivity, we utilize the same method, substituting
+ \begin{align}
+ \omega-\omega_1 \rightarrow \omega
+ \end{align}
+ Note that the argument of the Fermi distribution function also change as 
+ \begin{align}
+ f(\omega)\rightarrow f(\omega + \omega_1)
+ \end{align}
+ Finally, we obtain all the terms which contributes to GQM. Thus, the argument of the frequency integration can be written as
+ \begin{eqnarray}
+&&A_n(\omega)A_m(\omega+\omega_1)\\
+&& \times \{\langle n(\omega)|J_\alpha|m(\omega + \omega_1)\rangle\langle m(\omega+\omega_1)|J_\beta|n(\omega)\rangle \\
+&&+ (\alpha\leftrightarrow\beta) \}\times \frac{f(\omega)-f(\omega+\omega_1)}{\omega_1^2}\times \frac{1}{8\pi^2}.
+\end{eqnarray}
+Let us introduce a function
+\begin{align}
+h(n,m,\omega,\omega_1) = A_n(\omega)A_m(\omega+\omega_1)\frac{f(\omega)-f(\omega+\omega_1)}{8\pi^2\omega_1^2}
+\end{align}
+It is important to notice that $h(n,m,\omega,\omega_1)$ is non negative because of the positivity of the spectral function and the monotonicity of the fermi distribution function.
+Then, for arbitrary real numbers $c_\alpha$,
+\begin{align}
+\displaystyle \sum_{\alpha,\beta}c_\alpha g_{\alpha\beta}c_{\beta} &= \displaystyle \sum_{n,m,\alpha,\beta}\int_{0}^{\infty}d\omega_1\int_{-\infty}^{\infty}d\omega \;h(n,m,\omega,\omega_1)\;\\
+&\times \langle n(\omega)|c_\alpha J_\alpha|m(\omega + \omega_1)\rangle \\
+&\times \langle m(\omega+\omega_1)|c_\beta J_\beta|n(\omega)\rangle \times 2
+\end{align}
+Denoting 
+\begin{align}
+|\phi_n(\omega)\rangle = \displaystyle \sum_{\alpha} c_\alpha J_\alpha|n(\omega)\rangle ,
+\end{align}
+\begin{eqnarray}
+&&\displaystyle \sum_{\alpha,\beta}c_\alpha g_{\alpha\beta}c_{\beta}=\displaystyle \sum_{n,m} \int_{0}^{\infty}d\omega_1\int_{-\infty}^{\infty}d\omega h(n,m,\omega,\omega_1)\\
+&&\times 2 \langle \phi_n(\omega)| m(\omega+\omega_1)\rangle\langle m(\omega+\omega_1)|\phi_n(\omega)\rangle \\
+&&\geq 0
+\end{eqnarray}
+This demonstrates that the GQM is semi positive definite.
+%The inequality holds because
+%\begin{align}
+%Q(n,\omega,\omega_1) = \sum_m h(n,m,\omega,\omega_1)|m(\omega+\omega_1)\rangle\langle m(\omega+\omega_1)|
+%\end{align}
+%,which is superposition of projection operator has SPD;
+%\begin{align}
+%\langle \phi_n(\omega)|Q(n,\omega,\omega_1)|\phi_n(\omega)\rangle \geq 0
+%\end{align}
+\section{numerical results}
+\section*{Acknowledgements}
+R.P. is supported by JSPS, KAKENHI Grant No. JP18K03511. 
+The computation in this work has been done using the facilities of the Supercomputer Center, the Institute for Solid State Physics, the University of~\cite{resta2011insulating} Tokyo.~\cite{gratzer2007more}
+\bibliography{reference.bib}
+\end{document}
