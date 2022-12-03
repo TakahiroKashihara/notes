@@ -144,3 +144,10 @@ U&=\mathrm{Re} \Sigma^R(\omega)_{\alpha\alpha}+\mathrm{Re} \Sigma^R(-\omega)_{\b
 0&=\mathrm{Im}\Sigma^{R}(\omega)_{\alpha\alpha}-\mathrm{Im}\Sigma^{R}(-\omega)_{\beta\beta}
 \end{align}
 $$
+
+また、スペクトル関数$A(\omega,k)
+=-\mathrm{ImTr}G^R(\omega,k)$については、
+$$
+A(\omega,k)=A(-\omega,-k)
+$$
+が成り立つと分かる。
