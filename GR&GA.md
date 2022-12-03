@@ -13,6 +13,14 @@ $$
 \newcommand{\cad}{c_{k,\alpha}^{\dagger}}
 
 \newcommand{\cbd}{c_{k,\beta}^{\dagger}}
+
+\newcommand{\cma}{c_{-k,\alpha}}
+
+\newcommand{\cmb}{c_{-k,\beta}}
+
+\newcommand{\camd}{c_{-k,\alpha}^{\dagger}}
+
+\newcommand{\cbmd}{c_{-k,\beta}^{\dagger}}
 \begin{align}
 G^R &= -i\theta(t)\langle c_{k,\alpha}(t)c_{k,\beta}^{\dagger} + c_{k,\beta}^{\dagger}c_{k,\alpha}(t)\rangle\\
 G^A &= i\theta(-t)\langle c_{k,\alpha}(t)c_{k,\beta}^{\dagger} + c_{k,\beta}^{\dagger}c_{k,\alpha}(t)\rangle
@@ -47,19 +55,8 @@ $$
 上で求めた$G^R(\omega,k),G^A(\omega,k)$の式を使うと、
 
 $$
-\newcommand{\la}{\langle}
-
-\newcommand{\ra}{\rangle}
-
-\newcommand{\ca}{c_{k,\alpha}}
-
-\newcommand{\cb}{c_{k,\beta}}
-
-\newcommand{\cad}{c_{k,\alpha}^{\dagger}}
-
-\newcommand{\cbd}{c_{k,\beta}^{\dagger}}
-
 A(\omega,k) = \displaystyle \sum_n \la 0|\ca|n\ra \la n|\cbd|0\ra \delta(E_0 - E_n + \omega) + \la 0|\cbd|n\ra\la n| \ca | 0\ra \delta (E_n-E_0 + \omega)
+
 \\
 と書けるから、複素数\{z_\alpha\} に対して、\\
 \begin{align}
@@ -107,3 +104,43 @@ $$
 
 しかし、$$\mathrm{Im}\Sigma^{R}(0,k)  = 0$$
 ならば、?いや、だめか。
+
+レーマン表示を用いると、QWZ模型のPHSにより
+$$
+
+\begin{align}
+G^R_{\alpha,\beta}(\omega,k) &= \displaystyle \sum_n \frac{\la 0|C^{-1}C\ca C^{-1}C |n\ra \la n|C^{-1}C \cbd C^{-1}C| 0\ra}{E_0-E_n + \omega + i\delta } + \frac{\la 0|C^{-1}C\cbd C^{-1}C|n\ra \la n|C^{-1}C \ca C^{-1}C|0\ra}{E_n - E_0 + \omega + i\delta}\\
+&=\displaystyle \sum_n \frac{\la 0|\cbmd |n\ra \la n| \cma | 0\ra}{E_0-E_n + \omega + i\delta } + \frac{\la 0|\cma |n\ra \la n| \cbmd |0\ra}{E_n - E_0 + \omega + i\delta}\\
+&=-G^{R*}(-\omega,-k)_{\beta\alpha}
+\end{align}
+$$
+と分かる。同様にして、
+$$
+\begin{align}
+G^R_{\alpha,\alpha}(\omega,k) &=-G^{R*}(-\omega,-k)_{\beta\beta}\\
+G^R_{\beta,\beta}(\omega,k) &=-G^{R*}(-\omega,-k)_{\alpha\alpha}\\
+G^R_{\beta,\alpha}(\omega,k) &=-G^{R*}(-\omega,-k)_{\alpha\beta}
+
+\end{align}
+$$
+を得る。従って、
+
+$$
+\begin{align}
+\Big( \omega-H(k)+U/2-\Sigma^R(\omega,k)\Big)_{\alpha\alpha}=-\Big(-\omega-H^{*}(-k)+U/2-\Sigma^{R*}(-\omega,-k)\Big)_{\beta\beta}
+\end{align}
+$$
+であるから、QWZ模型の$H(k)$を当てはめると、
+
+$$
+\begin{align}
+U=\Sigma^R(\omega,k)_{\alpha\alpha}+\Sigma^{R*}(-\omega,-k)_{\beta\beta}
+\end{align}
+$$
+を得る。自己エネルギーの波数依存性を無視し、実部と虚部に分けて記述すると、
+$$
+\begin{align}
+U&=\mathrm{Re} \Sigma^R(\omega)_{\alpha\alpha}+\mathrm{Re} \Sigma^R(-\omega)_{\beta\beta}\\
+0&=\mathrm{Im}\Sigma^{R}(\omega)_{\alpha\alpha}-\mathrm{Im}\Sigma^{R}(-\omega)_{\beta\beta}
+\end{align}
+$$
