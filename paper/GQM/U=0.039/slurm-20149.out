@@ -1,0 +1,12 @@
+┌ Warning: rmprocs: process 1 not removed
+└ @ Distributed /builddir/build/BUILD/julia-1.7.0/build/usr/share/julia/stdlib/v1.7/Distributed/src/cluster.jl:1045
+NK = 100
+ok
+ok
+hsbz_ok
+writeBZ_ok
+BZ_ok
+sgn_ok
+int_ok
+15117.447940 seconds (100.61 M allocations: 3.634 GiB, 0.01% gc time, 0.11% compilation time)
+completed,M=1.5,U=0.039

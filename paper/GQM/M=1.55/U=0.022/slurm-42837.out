@@ -1,0 +1,18 @@
+┌ Warning: The call to compilecache failed to create a usable precompiled cache file for Xorg_xkeyboard_config_jll [33bec58e-1273-512f-9401-5d533626f822]
+│   exception = Invalid input in module list: expected Logging.
+└ @ Base loading.jl:1132
+┌ Warning: rmprocs: process 1 not removed
+└ @ Distributed /builddir/build/BUILD/julia-1.7.0/build/usr/share/julia/stdlib/v1.7/Distributed/src/cluster.jl:1045
+┌ Warning: The call to compilecache failed to create a usable precompiled cache file for GR_jll [d2c73de3-f751-5644-a686-071e5b155ba9]
+│   exception = Required dependency Qt5Base_jll [ea2cea3b-5b76-57ae-a6ef-0a8af62496e1] failed to load from a cache file.
+└ @ Base loading.jl:1132
+NK = 100
+ok
+ok
+hsbz_ok
+writeBZ_ok
+BZ_ok
+sgn_ok
+int_ok
+36667.437193 seconds (90.78 M allocations: 3.133 GiB, 0.00% gc time, 0.05% compilation time)
+completed,M=1.55,U=0.022

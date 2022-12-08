@@ -1,0 +1,23 @@
+┌ Warning: rmprocs: process 1 not removed
+└ @ Distributed /builddir/build/BUILD/julia-1.7.0/build/usr/share/julia/stdlib/v1.7/Distributed/src/cluster.jl:1045
+ERROR: LoadError: SystemError: opening file "/home/t-kashihara/numerical/100t_DMFTmany_08_18/M=1.5/U=0.047/Sigma_A20.dat": No such file or directory
+Stacktrace:
+ [1] open
+   @ ./iostream.jl:282 [inlined]
+ [2] open(f::Base.var"#396#397"{Char}, args::String; kwargs::Base.Pairs{Symbol, Union{}, Tuple{}, NamedTuple{(), Tuple{}}})
+   @ Base ./io.jl:328
+ [3] open
+   @ ./io.jl:328 [inlined]
+ [4] #countlines#395
+   @ ./io.jl:1208 [inlined]
+ [5] countlines
+   @ ./io.jl:1208 [inlined]
+ [6] test(inputdata::String)
+   @ Main /work/t-kashihara/08_22_qmtest/M=1.5/U=0.047/retestserver.jl:2
+ [7] swise(M::Float64, U::Float64)
+   @ Main /work/t-kashihara/08_22_qmtest/M=1.5/U=0.047/retestserver.jl:23
+ [8] mainU()
+   @ Main /work/t-kashihara/08_22_qmtest/M=1.5/U=0.047/qmwiseUg.jl:247
+ [9] top-level scope
+   @ ./timing.jl:220
+in expression starting at /work/t-kashihara/08_22_qmtest/M=1.5/U=0.047/qmwiseUg.jl:429

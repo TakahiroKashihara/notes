@@ -1,0 +1,45 @@
+┌ Warning: The call to compilecache failed to create a usable precompiled cache file for GR [28b8d3ca-fb5f-59d9-8090-bfdbd6d07a71]
+│   exception = Required dependency RelocatableFolders [05181044-ff0b-4ac5-8273-598c1e38db00] failed to load from a cache file.
+└ @ Base loading.jl:1132
+┌ Warning: Module FFMPEG_jll with build ID 454774112053572 is missing from the cache.
+│ This may mean FFMPEG_jll [b22a6f82-2f65-5046-a5b2-351ab43fb4e5] does not support precompilation but is imported by a module that does.
+└ @ Base loading.jl:1107
+┌ Warning: rmprocs: process 1 not removed
+└ @ Distributed /builddir/build/BUILD/julia-1.7.3/build/usr/share/julia/stdlib/v1.7/Distributed/src/cluster.jl:1045
+┌ Warning: The call to compilecache failed to create a usable precompiled cache file for Plots [91a5bcdd-55d7-5caf-9e0b-520d859cae80]
+│   exception = Required dependency Parsers [69de0a69-1ddd-5017-9359-2bf0b02dc9f0] failed to load from a cache file.
+└ @ Base loading.jl:1132
+NK = 100
+ok
+ok
+      From worker 7:	┌ Warning: Module FFMPEG_jll with build ID 454774112053572 is missing from the cache.
+      From worker 7:	│ This may mean FFMPEG_jll [b22a6f82-2f65-5046-a5b2-351ab43fb4e5] does not support precompilation but is imported by a module that does.
+      From worker 7:	└ @ Base loading.jl:1107
+      From worker 2:	┌ Warning: Module FFMPEG_jll with build ID 454774112053572 is missing from the cache.
+      From worker 2:	│ This may mean FFMPEG_jll [b22a6f82-2f65-5046-a5b2-351ab43fb4e5] does not support precompilation but is imported by a module that does.
+      From worker 2:	└ @ Base loading.jl:1107
+      From worker 3:	┌ Warning: Module FFMPEG_jll with build ID 454774112053572 is missing from the cache.
+      From worker 3:	│ This may mean FFMPEG_jll [b22a6f82-2f65-5046-a5b2-351ab43fb4e5] does not support precompilation but is imported by a module that does.
+      From worker 3:	└ @ Base loading.jl:1107
+      From worker 5:	┌ Warning: Module FFMPEG_jll with build ID 454774112053572 is missing from the cache.
+      From worker 5:	│ This may mean FFMPEG_jll [b22a6f82-2f65-5046-a5b2-351ab43fb4e5] does not support precompilation but is imported by a module that does.
+      From worker 5:	└ @ Base loading.jl:1107
+      From worker 4:	┌ Warning: Module FFMPEG_jll with build ID 454774112053572 is missing from the cache.
+      From worker 4:	│ This may mean FFMPEG_jll [b22a6f82-2f65-5046-a5b2-351ab43fb4e5] does not support precompilation but is imported by a module that does.
+      From worker 4:	└ @ Base loading.jl:1107
+      From worker 8:	┌ Warning: Module FFMPEG_jll with build ID 454774112053572 is missing from the cache.
+      From worker 8:	│ This may mean FFMPEG_jll [b22a6f82-2f65-5046-a5b2-351ab43fb4e5] does not support precompilation but is imported by a module that does.
+      From worker 8:	└ @ Base loading.jl:1107
+      From worker 9:	┌ Warning: Module FFMPEG_jll with build ID 454774112053572 is missing from the cache.
+      From worker 9:	│ This may mean FFMPEG_jll [b22a6f82-2f65-5046-a5b2-351ab43fb4e5] does not support precompilation but is imported by a module that does.
+      From worker 9:	└ @ Base loading.jl:1107
+      From worker 6:	┌ Warning: Module FFMPEG_jll with build ID 454774112053572 is missing from the cache.
+      From worker 6:	│ This may mean FFMPEG_jll [b22a6f82-2f65-5046-a5b2-351ab43fb4e5] does not support precompilation but is imported by a module that does.
+      From worker 6:	└ @ Base loading.jl:1107
+hsbz_ok
+writeBZ_ok
+BZ_ok
+sgn_ok
+int_ok
+41420.466873 seconds (92.19 M allocations: 3.152 GiB, 0.00% gc time, 0.04% compilation time)
+completed,M=1.95,U=0.022

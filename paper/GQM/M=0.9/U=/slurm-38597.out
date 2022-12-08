@@ -1,0 +1,11 @@
+┌ Warning: rmprocs: process 1 not removed
+└ @ Distributed /builddir/build/BUILD/julia-1.7.0/build/usr/share/julia/stdlib/v1.7/Distributed/src/cluster.jl:1045
+ERROR: LoadError: BoundsError: attempt to access 1-element Vector{String} at index [2]
+Stacktrace:
+ [1] getindex
+   @ ./array.jl:861 [inlined]
+ [2] mainU()
+   @ Main /work/t-kashihara/07_28_qmtest/M=0.9/U=/qmwiseUg.jl:246
+ [3] top-level scope
+   @ ./timing.jl:220
+in expression starting at /work/t-kashihara/07_28_qmtest/M=0.9/U=/qmwiseUg.jl:429

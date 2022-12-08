@@ -1,0 +1,24 @@
+┌ Warning: The call to compilecache failed to create a usable precompiled cache file for Xorg_xkbcomp_jll [35661453-b289-5fab-8a00-3d9160c6a3a4]
+│   exception = Required dependency Xorg_libxkbfile_jll [cc61e674-0454-545c-8b26-ed2c68acab7a] failed to load from a cache file.
+└ @ Base loading.jl:1132
+┌ Warning: The call to compilecache failed to create a usable precompiled cache file for xkbcommon_jll [d8fb68d0-12a3-5cfd-a85a-d49703b185fd]
+│   exception = Required dependency Wayland_jll [a2964d1f-97da-50d4-b82a-358c7fce9d89] failed to load from a cache file.
+└ @ Base loading.jl:1132
+┌ Warning: The call to compilecache failed to create a usable precompiled cache file for Qt5Base_jll [ea2cea3b-5b76-57ae-a6ef-0a8af62496e1]
+│   exception = Required dependency Xorg_xkbcomp_jll [35661453-b289-5fab-8a00-3d9160c6a3a4] failed to load from a cache file.
+└ @ Base loading.jl:1132
+┌ Warning: rmprocs: process 1 not removed
+└ @ Distributed /builddir/build/BUILD/julia-1.7.0/build/usr/share/julia/stdlib/v1.7/Distributed/src/cluster.jl:1045
+┌ Warning: The call to compilecache failed to create a usable precompiled cache file for GR_jll [d2c73de3-f751-5644-a686-071e5b155ba9]
+│   exception = Invalid input in module list: expected Qt5Base_jll.
+└ @ Base loading.jl:1132
+NK = 100
+ok
+ok
+hsbz_ok
+writeBZ_ok
+BZ_ok
+sgn_ok
+int_ok
+32070.622399 seconds (90.76 M allocations: 3.133 GiB, 0.00% gc time, 0.06% compilation time)
+completed,M=1.45,U=0.022
