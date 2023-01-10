@@ -21,7 +21,7 @@
 \newcommand{\cmb}{c_{-k,b}}
 \newcommand{\camd}{c_{-k,a}^{\dagger}}
 \newcommand{\cbmd}{c_{-k,b}^{\dagger}}
-
+\newcommand{\Ch}{\hat{C}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\pa}{\partial}
@@ -51,7 +51,7 @@
 \frontmatter
 
 \chapter*{概要}
-現代の凝縮系理論においては、物理学の幾何学的側面が重要な役割を果たす。量子計量もその幾何学的量の一つで、パラメータ空間上に距離を定義する。相互作用の無い系においては、運動量空間上の量子計量とトポロジカル不変量との関係が指摘されている。本研究では、この量子計量を相互作用がある場合に拡張する(Generalized Quantum Metric、以下GQM)。このGQMは1粒子グリーンで記述される光学伝導度(つまり、光学伝導度を計算する際にバーテックス補正を無視したもの)に基づいている。我々は、自由な系においてGQMが既存の量子計量に一致することと、GQMが半正定値性を持つことを解析的に示した。したがって、GQMは既存の量子計量の拡張になっており、数学的にも計量としての性質を満たしている。さらに、チャーン絶縁体の模型として知られるQi-Wu-Zhang(QWZ)模型に斥力相互作用を加えた模型に対してGQMを数値的に計算し、GQMが相互作用がある場合にもトポロジカル不変量と関係がああることを示した。GQMは一般の系でトポロジーを判定するのに役立つことと期待される。
+現代の凝縮系理論においては、物理学の幾何学的側面が重要な役割を果たす。量子計量もその幾何学的量の一つで、パラメータ空間上に距離を定義する。相互作用の無い系においては、運動量空間上の量子計量とトポロジカル不変量との関係が指摘されている。本研究では、この量子計量を相互作用がある場合に拡張する(Generalized Quantum Metric、以下GQM)。このGQMは1粒子グリーンで記述される光学伝導度(つまり、光学伝導度を計算する際にバーテックス補正を無視したもの)に基づいている。我々は、自由な系においてGQMが既存の量子計量に一致することと、GQMが半正定値性を持つことを解析的に示した。したがって、GQMは既存の量子計量の拡張になっており、数学的にも計量としての性質を満たしている。さらに、チャーン絶縁体の模型として知られるQi-Wu-Zhang(QWZ)模型に斥力相互作用を加えた模型に対してGQMを数値的に計算し、GQMが相互作用がある場合にもトポロジカル不変量と関係があることを示した。GQMは一般の系でトポロジーを判定するのに役立つと期待される。
 
 \tableofcontents
 
@@ -59,16 +59,18 @@
 
 
 \chapter{イントロダクション}
-物理学の幾何学的側面は、ゲージ理論、トポロジカル欠陥の分類など\cite{nakahara2018geometry}様々な物理の理論を構築するために重要な役割を果たしてきた。近年の凝縮系物理においては、運動量空間上の固有ベクトルの幾何学的側面が大きな注目を集めている~\cite{bernevig2013topological,PhysRevX.9.041015,doi:10.1126/sciadv.1501524,Tokura2018,PhysRevLett.115.216806}。運動量空間上の幾何学的量で最も重要な量の一つはベリー曲率である。ベリー曲率の運動量空間上の積分値は量子化し、チャーン数と呼ばれる量子ホール効果に寄与するトポロジカル不変量に比例する~\cite{PhysRevLett.49.405}。このベリー曲率と対をなすの量子計量である。量子幾何テンソルの虚部がベリー曲率に比例するのに対し、量子幾何テンソルの実部が量子計量である\cite{shapere1989geometric}。量子計量はいわゆる「計量」であり、運動量空間上に距離を定義する。近年の研究では、 超伝導~\cite{Peotta2015,PhysRevLett.126.027002,PhysRevLett.128.087002,2022arXiv220900007H}、 光学応答~\cite{PhysRevB.94.134423,PhysRevB.104.134312,PhysRevResearch.4.013217}、非エルミート物理学~\cite{PhysRevLett.127.107402,PhysRevB.103.125302}など様々な凝縮系物理学の分野において、量子計量が重要な役割を果たすことが明らかにされている。
+物理学の幾何学的側面は、ゲージ理論、トポロジカル欠陥の分類など\cite{nakahara2018geometry}様々な物理の理論を構築するために重要な役割を果たしてきた。近年の凝縮系物理においては、運動量空間上の固有ベクトルの幾何学的側面が大きな注目を集めている~\cite{bernevig2013topological,PhysRevX.9.041015,doi:10.1126/sciadv.1501524,Tokura2018,PhysRevLett.115.216806}。運動量空間上の幾何学的量で最も重要な量の一つはベリー曲率である。ベリー曲率の運動量空間上の積分値は量子化し、チャーン数と呼ばれる、量子ホール効果に寄与するトポロジカル不変量に比例する~\cite{PhysRevLett.49.405}。このベリー曲率と対をなすの量子計量である。量子幾何テンソルの虚部がベリー曲率に比例するのに対し、量子幾何テンソルの実部が量子計量である\cite{shapere1989geometric}。量子計量はいわゆる「計量」であり、運動量空間上に距離を定義する。近年の研究では、 超伝導~\cite{Peotta2015,PhysRevLett.126.027002,PhysRevLett.128.087002,2022arXiv220900007H}、 光学応答~\cite{PhysRevB.94.134423,PhysRevB.104.134312,PhysRevResearch.4.013217}、非エルミート物理学~\cite{PhysRevLett.127.107402,PhysRevB.103.125302}など様々な凝縮系物理学の分野において、量子計量が重要な役割を果たすことが明らかにされている。
 
 量子計量の積分値は量子化しないものの、量子計量とトポロジーとの関係が報告されている。例えば、量子計量の積分値(具体的には、量子計量のトレースと、量子計量によって定義されるパラメータ空間の体積(量子体積))とチャーン数の関係が指摘されている~\cite{Peotta2015,PhysRevB.104.045103, PhysRevB.103.L241102,Zhang_2022}。文献~\cite{PhysRevB.104.045103}では、量子体積によってチャーン数がある程度推定できることが数値的に確かめられている。さらに、脆弱なトポロジー(fragile topology)との関係~\cite{PhysRevLett.124.167002,PhysRevLett.126.027002}やSu-Schriffer-Heeger(SSH)模型の巻き付き数との関係(文献~\cite{PhysRevLett.124.167002}のサプリを参照)も指摘されている。
 
 物理系のトポロジーは、相互作用がある系においても盛んに研究されている~\cite{Rachel_2018,Hohenadler_2013}。本来、トポロジカル不変量は自由な系においてブロッホハミルトニアンから定義されるものであるので、相関がある場合には同様の議論ができない。しかし、トポロジカル不変量を1粒子グリーン関数で記述することによって、一般的にトポロジカル不変量を定義することが出来る\cite{PhysRevLett.105.256803,PhysRevX.2.031008,article,PhysRevB.92.085126}。例えば、上で述べたチャーン数は、グリーン関数で表される式を運動量空間と周波数空間で積分した形で書くことが出来る~\cite{PhysRevLett.105.256803,PhysRevB.83.085426}。チャーン数は元々ベリー曲率を運動量空間で積分したものだったが、相互作用がある場合にはグリーン関数の周波数依存性を消す必要があるため、周波数空間でも積分しなければならない。相互作用の効果はグリーン関数の自己エネルギーに含まれており、この一般化されたチャーン数も量子化する。
 
-一方で、運動量空間上の量子計量は強相関系における定義は、文献~\cite{10.21468/SciPostPhysCore.5.3.040}で提案されているものの、その定義は自由な系の場合と同様にブロッホハミルトニアンの固有状態を十分に反映したものとは言えない。(ひねり境界条件によって定義される量子計量は相関がある場合でも定義できる~\cite{Resta2011, PhysRevB.62.1666, Raffaele_Resta_2002}。しかし、その定義は系の基底状態を用いているため、一般の系で実際に計算するのは
+一方で、運動量空間上の量子計量の強相関系における定義は、文献~\cite{10.21468/SciPostPhysCore.5.3.040}で提案されているものの、その定義は自由な系の場合と同様にブロッホハミルトニアンの固有状態を用いており、系の情報を十分に反映したものとは言えない。(ひねり境界条件によって定義される量子計量は相関がある場合でも定義できる~\cite{Resta2011, PhysRevB.62.1666, Raffaele_Resta_2002}。しかし、その定義は系の基底状態を用いているため、一般の系で実際に計算するのは
 困難である)
 
-本研究では、1粒子グリーン関数を用いて運動量空間上の一般化された量子計量(Generalized Quantum Metric、以下GQM)を定義することを提案する。のちに示すように、GQMは自由な系では既存の定義~\cite{PhysRevB.56.12847}と一致する。また、相互作用がある場合も半正定値性を保つので、一般の系で計量として機能する。その後、GQMがチャーン絶縁体のトポロジカル相転移を捉えられることを数値的に確かめる。
+本研究では、1粒子グリーン関数を用いて運動量空間上の一般化された量子計量(Generalized Quantum Metric、以下GQM)を定義することを提案する。のちに示すように、GQMは自由な系では既存の定義~\cite{PhysRevB.56.12847}と一致する。また、相互作用がある場合も半正定値性を保つので、一般の系で計量として機能する。
+
+本論文は以下のように構成される;まず、第2章では量子計量の導入を行い、量子計量と関連する量である量子幾何テンソルとベリー曲率も含めて、よく知られた基本的性質を振り返る。第3章では、電気伝導度とワニエ関数位置のゆらぎに話題を絞って、量子計量と物理量の関係を述べる。この章では、量子計量とチャーン数の関係についても解説する。第4章では、本研究の主題である、GQMの定義を述べ、自由な系において既存の定義に一致することと半正定値性を持つことを解析的に示す。第5章では、本研究の数値計算で扱った模型と理論的手法について説明する。トポロジーを調べる際は対称性が重要な役割を果たすので、模型の対称性に特について詳しく述べる。第6章では相互作用がある系でのGQMの計算結果を示す。この結果から、GQMは相互作用がある場合でもトポロジーとの関係があることが分かる。最後に、第7章で本研究の内容をまとめ、結論を述べる。
 
 \chapter{量子計量の定義と基本的性質}
 この章では、本研究の主題である量子計量を定義し、その基本的性質について説明する。あらかじめ注意しておくと、量子計量の定義には一つの固有状態に着目する場合と複数の固有状態に着目する場合との2通りがあり、本研究で強相関系に拡張されるのは複数の固有状態に着目したものである。以下では、ハミルトニアンの$n$番目の固有状態についての量子計量は$g_{ij}^{n}(\lambda)$などのように上付き添え字を示すことで区別する。
@@ -85,7 +87,7 @@
 \begin{eqnarray}
 \chi^{n}_{ij}(\lambda)=(|\pa_{\lambda_i}\Psi_n(\lambda)\ra,Q_n|\pa_{\lambda_j}\Psi_n(\lambda)\ra)
 \end{eqnarray}
-となるが、射影演算子の一般的性質である$Q_n^2=Q_n$およびエルミート性を用いると、
+となるが、ヒルベルト空間上の射影演算子の一般的性質である$Q_n^2=Q_n$およびエルミート性を用いると、
 \begin{eqnarray}
 \chi^{n}_{ij}(\lambda)&=(|\pa_{\lambda_i}\Psi_n(\lambda)\ra,Q_n|\pa_{\lambda_j}\Psi_n(\lambda)\ra)\\
 &=(|\pa_{\lambda_i}\Psi_n(\lambda)\ra,Q_n^2|\pa_{\lambda_j}\Psi_n(\lambda)\ra)\\
@@ -112,7 +114,7 @@
 \label{SPDsingle}
 \displaystyle \sum_{ij} z_i^{*}\chi^{n}_{ij}(\lambda)z_j=(|\phi_n(\lambda)\ra,Q_n|\phi_n(\lambda)\ra)\geq 0
 \end{eqnarray}
-が成り立つ。最後の不等号は射影演算子の半正定値性から従う。したがって、$\{\chi^{n}_{ij}(\lambda)\}_{ij}$は半正定値エルミート行列である。
+が成り立つ。最後の不等号は射影演算子の半正定値性から従う。よって、$\{\chi^{n}_{ij}(\lambda)\}_{ij}$は半正定値エルミート行列である。
 
 量子計量とベリー曲率はそれぞれ、量子幾何テンソルの実部と虚部に対応している;
 \begin{eqnarray}
@@ -170,7 +172,7 @@ g_{11}(k)=\la \pa_{k} u(k)|(1-|u(k)\ra\la u(k)|)|\pa_{k}u(k)\ra =1/4
 \begin{eqnarray}
 \Omega = i \frac{1}{(1+|\xi|^2)^2}d\xi \wedge d \bar{\xi}
 \end{eqnarray}
-で与えられうようなケーラー計量である。つまり、$J$を概複素構造として、$Z$を$\mathbb{C}P^1$の接空間の元としたとき、$g(Z,Z)=\Omega(Z,JZ)$である。今回の場合は、
+で与えられるようなケーラー計量である。つまり、$J$を概複素構造として、$Z$を$\mathbb{C}P^1$の接空間の元としたとき、$g(Z,Z)=\Omega(Z,JZ)$である。今回の場合は、
 $ \xi = -i\exp(ik),Z = -i\exp(ik)\frac{\partial}{\partial \xi},JZ = \exp(ik)\frac{\partial}{\partial \bar{\xi}} $とすれば良い。ただし、$JZ$の係数は内積を取る際に複素共役にする必要がある。そうすれば、
 \begin{eqnarray}
     g_{11}(k) &=&\Omega(Z,JZ) \\
@@ -195,6 +197,7 @@ $ \xi = -i\exp(ik),Z = -i\exp(ik)\frac{\partial}{\partial \xi},JZ = \exp(ik)\fra
 \end{eqnarray}
 は占有されていない状態への射影を行う。これに伴い、この量子計量はFubini-Study計量ではなくなっていることに注意。その代わりに、複素射影空間$\mathbb{C}P^n$ではなく複素グラスマン多様体上の計量となっている。グラスマン多様体は射影空間の一般化と呼べるもので、射影空間が直線(1次元部分空間)の集まりであるのに対し、グラスマン多様体は平面なども含めた部分空間の空間の集まりである\cite{nakahara2018geometry}。2バンドの模型で一つのバンドが占有されている系においては、この2つの定義は一致するが、一般には一致しない。また、各バンドの$\chi^n_{ij}(k)$を$n$について足し上げても$\chi_{ij}(k$)とは一般に等しくならない。
 
+しかし、量子幾何テンソルテンソルと量子計量の半正定値性や、量子計量とベリー曲率の間の不等式は同様に成り立つ。
 \chapter{量子計量と物理量の関係}
 前章では述べた量子計量の定義と基本的性質について確認したが、物理量との関わりについては触れなかった。この章では、特に電気伝導度と量子計量の関係、ワニエ関数の位置揺らぎと量子計量の関係について詳しく見ていく。この章以降、$\hbar=e=k_B=1$となる単位系を用い、結晶格子の格子定数は1とする。
 \section{電気伝導度との関係}
@@ -290,30 +293,25 @@ H(k+A)=H(k) + \pa_k H(k)\cdot A + \ldots
 \begin{eqnarray}
     |\Phi_\theta\ra = \hat{A}\displaystyle \prod_{\epsilon_n(k)<\mu} |k\ra \otimes |u_n(k+\theta/L)\ra
 \end{eqnarray}
-と書けることから分かる。ただし、$\hat{A}$は反対称演算子(フェルミオン系)、$\mu$は化学ポテンシャルである、$|u_n(k)\ra$はブロッホハミルトニアンの固有ベクトルである。これを$\theta$について微分すると
+と書けることから従う。ただし、$\hat{A}$は反対称演算子(フェルミオン系)、$\mu$は化学ポテンシャルである、$|u_n(k)\ra$はブロッホハミルトニアンの固有ベクトルである。これを$\theta$について微分する際、
 \begin{eqnarray}
-    |\pa_{\theta_i}\Phi_\theta \ra&=&\hat{A}\displaystyle \prod_{\epsilon_n(k)<\mu} |k\ra \otimes \pa_{\theta_i}|u_n(k+\theta/L)\ra\\
-    &=&\hat{A}\displaystyle \prod_{\epsilon_n(k)<\mu} |k\ra \otimes \frac{1}{L}\pa_{k_i}|u_n(k+\theta/L)\ra
+\pa_{\theta_i}\Bigl(|k\ra \otimes |u_n(k+\theta/L)\ra\Bigr)
+=|k\ra \otimes \frac{1}{L}\pa_{k_i}|u_n(k+\theta/L)\ra
 \end{eqnarray}
-を得る。つまり、$\theta$についての微分を$k$についての微分に変換できる。これにより、
+によって$\theta$についての微分を$k$についての微分に変換できる。これにより、
 \begin{eqnarray}
     \chi_{ij}(\theta) = \frac{1}{L^2}\displaystyle \sum_k \chi_{ij}(k+\theta/L)
 \end{eqnarray}
-と分かる。ただし、左辺の$\chi_ij(k)$は前章の後半で紹介した、占有された全ての状態に対しての量子幾何テンソルである。特に、2次元系においては、熱力学極限で
+と分かる。ただし、左辺の$\chi_{ij}(k)$は前章の後半で紹介した、占有された全ての状態に対しての量子幾何テンソルである。特に、2次元系においては、熱力学極限で
 \begin{eqnarray}
     \chi_{ij}(\theta)=\frac{1}{(2\pi)^2}\int　dk_xdk_y \chi_{ij}(k)
 \end{eqnarray}
-が成り立つ\cite{ozawa2021relations}。この左辺は$\theta$に依存していないから、右辺も実際は$\theta$に依存していない。両辺の実部を取ることにより、量子計量についても同様の関係式が成り立つと分かる。また、虚部を見れば、ひねり角から定義されるチャーン数と運動量から定義されるチャーン数は等しいと分かる;
+が成り立つ\cite{PhysRevB.104.045103}。この左辺は$\theta$に依存していないから、右辺も実際は$\theta$に依存していない。両辺の実部を取ることにより、量子計量についても同様の関係式が成り立つと分かる。また、虚部を見れば、ひねり角から定義されるチャーン数と運動量から定義されるチャーン数は等しいと分かる;
 \begin{eqnarray}
     C=\frac{1}{2\pi}\int d\theta_x d\theta_y \Omega_{xy}(\theta)=\frac{1}{2\pi}\int dk_x dk_y \Omega_{xy}(k)
 \end{eqnarray}
 このことは、自由な系においてブロッホ波動関数を用いてホール伝導度を計算しても、基底状態の波動関数を用いてホール伝導度を計算しても、同じチャーン数が現れることを保証している。
-\begin{figure}
-\centering
-\includegraphics[width=\columnwidth]{Fig1.pdf}
-\caption{test}
-\label{fig:qmcompare}
-\end{figure}
+
 
 \section{ワニエ関数の位置揺らぎとの関係}
 ワニエ関数とは簡単に言えばブロッホ波動関数をフーリエ級数展開した時の係数であり、ブロッホ波動関数の持つ系の情報を引き継いでいる。したがって、ワニエ関数も系についての何らかの情報を担っていると考えられる。実際、ワニエ関数の対称性と局在性が系のトポロジーと関係していることが知られている\cite{PhysRevLett.121.126402,2022arXiv220900007H}
@@ -347,7 +345,7 @@ H(k+A)=H(k) + \pa_k H(k)\cdot A + \ldots
 となる。同じ議論を繰り返すことにより、$f$が$C^2$級なら$a_n = o(1/n^2)\quad (n\rightarrow \infty)$、$f$が$C^3$級なら$a_n = o(1/n^3)\quad (n\rightarrow \infty)$と分かる。従って、$f$が滑らかなら$a_n$はどんな冪よりも速く$0$に収束する、すなわち指数的に収束する。$f$が滑らかで無い場合は上の議論はいつか破綻し、$a_n$は冪的に収束する。ワニエ関数に話を戻せば、$|u(k)\ra$が滑らかなら、ワニエ関数が指数的に局在し、$|u(k)\ra$に特異性があれば、ワニエ関数は指数的に局在することになる。
 従って、$\Omega_I$は大きくなると考えられる。
 
-実は、これを不等式で評価したのが式$(\ref{Trgneq})$であり、(式$(\ref{Trgneq})$は一つの固有状態に着目した場合の不等式であるが、複数の固有状態に着目した場合にも同じ不等式が成り立つ。)2次元系において両辺を積分することで
+実は、これを不等式で評価したのが式$(\ref{Trgneq})$であり、(式$(\ref{Trgneq})$は一つの固有状態に着目した場合の不等式であるが、複数の固有状態に着目した場合にも同じ不等式が成り立つ)2次元系において両辺を積分することで
 \begin{eqnarray}
     \Omega_I &=& {1\over (2\pi)^2}\int dk\quad \mathrm{Tr}(g(k))\\
     &\geq& 2\pi |C|
@@ -387,7 +385,7 @@ H(k+A)=H(k) + \pa_k H(k)\cdot A + \ldots
 
 では、同じ発想で量子計量を定義し、相互作用がある系でチャーン数と波数空間の量子計量の関係を調べることは出来ないだろうか？この疑問に答えるため、本研究では波数空間上の量子計量の一般化を試みた。
 
-\section{グリーン関数を用いた波数空間上の量子計量の定義}
+\section{グリーン関数を用いた波数空間上の量子計量(GQM)の定義}
 前章では、光学伝導度と量子計量の関係式$(\ref{relation_qmk_conductivity})$に触れた。光学伝導度の計算では必ず波数積分が現れるので、その被積分関数を$\sigma_{\alpha\beta}(\omega,k)$とする。すると、式$(\ref{relation_qmk_conductivity})$は波数積分の被積分関数のレベルで等しいと分かる、すなわち
 \begin{eqnarray}
     \mathrm{Re} \int_0^{\infty}d\omega \frac{\sigma_{\alpha\beta}(\omega,k)+\sigma_{\beta\alpha}(\omega,k)}{2\pi\omega}=g_{\alpha\beta}(k)
@@ -400,7 +398,7 @@ H(k+A)=H(k) + \pa_k H(k)\cdot A + \ldots
 && \ \ \ \ \ \ +J_\alpha G^R(\omega+\omega_1)J_\beta G^{R-A}(\omega)\nonumber\\ 
 && \ \ \ \ \ \ +J_\alpha G^{R-A}(\omega)J_\beta G^A(\omega-\omega_1)\Bigr]
 \end{eqnarray}
-ただし、左辺では波数依存性を省略し、$G^R,G^A$はそれぞれ遅延、先進グリーン関数であり、$J_\alpha=\pa_{\alpha} H(k)$は電流演算子、$f(\omega)$はフェルミ分布関数である。また、$G^{R-A}=G^R-G^A$である。上のグリーン関数で定義された量子計量については、これまでの量子計量$g_{\alpha\beta}(k)$と区別するため$\tilde{g}_{\alpha\beta}(\bk)$と書くことにする。以下では$\tilde{g}_{\alpha\beta}(\bk)$を一般化された量子計量(Generalized Quantum Metric, GQM)と呼ぶ。グリーン関数の中に自己エネルギーを含めれば、相関がある場合にも量子計量が定義できたことになる。
+ただし、式(\ref{optk})の右辺では波数依存性を省略している。$G^R,G^A$はそれぞれ遅延、先進グリーン関数であり、$J_\alpha=\pa_{\alpha} H(k)$は電流演算子、$f(\omega)$はフェルミ分布関数である。また、$G^{R-A}=G^R-G^A$である。上のグリーン関数で定義された量子計量については、これまでの量子計量$g_{\alpha\beta}(k)$と区別するため$\tilde{g}_{\alpha\beta}(\bk)$と書くことにする。以下では$\tilde{g}_{\alpha\beta}(\bk)$を一般化された量子計量(Generalized Quantum Metric, GQM)と呼ぶ。グリーン関数の中に自己エネルギーを含めれば、相関がある場合にも量子計量が定義できたことになる。
 
 GQMが自由な系において絶対零度$T=0$で既存の定義と一致することを確かめよう。その前に、グリーン関数の基本的性質について確認しておく。ただし、以下では絶対零度$T=0$のみを考える。
 
@@ -411,10 +409,10 @@ G^A_{ab}(t,k) &= i\theta(-t)\langle c_{k,a}(t)c_{k,b}^{\dagger} + c_{k,b}^{\dagg
 \end{eqnarray}
 で定義される。ただし、$a,b$は内部自由度を表す。これをレーマン表示してフーリエ変換すると、
 \begin{eqnarray}
-    G^R_{a,b}(\omega,k) &= \displaystyle \sum_n \frac{\la 0|\ca |n\ra \la n| \cbd | 0\ra}{E_0-E_n + \omega + i\delta } + \frac{\la 0|\cbd |n\ra \la n| \ca |0\ra}{E_n - E_0 + \omega + i\delta}\\
-G^A_{a,b}(\omega,k) &= \displaystyle \sum_n \frac{\la 0|\ca |n\ra \la n | \cbd | 0\ra}{E_0-E_n + \omega -i\delta} + \frac{\la 0| \cbd |n \ra \la n | \ca | n\ra}{E_n - E_0 + \omega - i\delta}
+    G^R_{ab}(\omega,k) &= \displaystyle \sum_n \frac{\la 0|\ca |n\ra \la n| \cbd | 0\ra}{E_0-E_n + \omega + i\eta } + \frac{\la 0|\cbd |n\ra \la n| \ca |0\ra}{E_n - E_0 + \omega + i\eta}\\
+G^A_{ab}(\omega,k) &= \displaystyle \sum_n \frac{\la 0|\ca |n\ra \la n | \cbd | 0\ra}{E_0-E_n + \omega -i\eta} + \frac{\la 0| \cbd |n \ra \la n | \ca | n\ra}{E_n - E_0 + \omega - i\eta}
 \end{eqnarray}
-を得る。ただし、$|0\ra$は基底状態、$|n\ra$は$n$番目のエネルギー固有状態、$E_0,E_n$はそれに対応するエネルギー固有値である。また、分母に表れる$\delta$は正の微小量である。この表式から、
+を得る。ただし、$|0\ra$は基底状態、$|n\ra$は$n$番目のエネルギー固有状態、$E_0,E_n$はそれに対応するエネルギー固有値である。また、分母に表れる$\eta$は正の微小量である。この表式から、
 \begin{eqnarray}
     G^R(\omega,k) = G^{A\dagger}(\omega,k)
 \end{eqnarray}
@@ -423,23 +421,23 @@ G^A_{a,b}(\omega,k) &= \displaystyle \sum_n \frac{\la 0|\ca |n\ra \la n | \cbd |
 さらに、スペクトル関数は
 
 \begin{eqnarray}
-    A_{ab}(\omega,k)&=& -\frac{1}{2\pi i} (G^R(\omega,k)-G^A(\omega,k))\\
+    A_{ab}(\omega,k)&=& -\frac{1}{2\pi i} (G^R_{ab}(\omega,k)-G^A_{ab}(\omega,k))\\
     &=&\displaystyle \sum_n \la 0|\ca|n\ra \la n|\cbd|0\ra \delta(E_0 - E_n + \omega) \\
     &+& \la 0|\cbd|n\ra\la n| \ca | 0\ra \delta (E_n-E_0 + \omega)
 \end{eqnarray}
 書けるので、$A_{ab}(\omega,k)$はエルミート行列である。さらに、任意の複素数列$\{z_a\}$に対し、
 \begin{eqnarray}
-    \displaystyle \sum_{a,b} z^*_a A_{a,b}(\omega,k)z_b &=& \displaystyle \sum_{a,b,n} \la 0|z^*_a \ca |n\ra\la n | \cbd z_b |0\ra \delta(E_0-E_n + \omega) \\
+    \displaystyle \sum_{a,b} z^*_a A_{ab}(\omega,k)z_b &=& \displaystyle \sum_{a,b,n} \la 0|z^*_a \ca |n\ra\la n | \cbd z_b |0\ra \delta(E_0-E_n + \omega) \\
     &+&  \la 0|z_b \cbd|n\ra\la n| z_a^*\ca | 0\ra \delta (E_n-E_0 + \omega)
 \end{eqnarray}
 であるが、ここで
 \begin{align}
-|\phi_k\ra &= \displaystyle \sum_\alpha \cad z_a |0\ra\\ 
-|\psi_k\ra &= \displaystyle \sum_\alpha \ca z_a^* |0\ra
+|\phi_k\ra &= \displaystyle \sum_a \cad z_a |0\ra\\ 
+|\psi_k\ra &= \displaystyle \sum_a \ca z_a^* |0\ra
 \end{align}
 を用いると、
 \begin{align}
-\displaystyle \sum_{\alpha,\beta} z^*_\alpha A_{\alpha,\beta}(\omega,k)z_\beta &= \displaystyle \sum_n |\la \phi_k|n\ra|^2 \delta(E_0 - E_n + \omega) + |\la \psi_k|n\ra |^2\delta(E_n-E_0 + \omega)\geq 0
+\displaystyle \sum_{a,b} z^*_aA_{ab}(\omega,k)z_b &= \displaystyle \sum_n |\la \phi_k|n\ra|^2 \delta(E_0 - E_n + \omega) + |\la \psi_k|n\ra |^2\delta(E_n-E_0 + \omega)\geq 0
 \end{align}
 つまり、エルミート行列$A(\omega,k)$半正定値である。これにより、$A(\omega,k)$の固有値が全て0以上であることがわかる。
 
@@ -456,19 +454,19 @@ G^A_{a,b}(\omega,k) &= \displaystyle \sum_n \frac{\la 0|\ca |n\ra \la n | \cbd |
 (第二項)
 &=& \mathrm{Tr}(J_\alpha G^R(\omega+\omega_1)J_\beta (G^R-G^A))\\
          &=& (J_\alpha)_{nm}(G^R(\omega+\omega_1))_{ml}(J_\beta)_{lk}((G^R)_{ln}-(G^A)_{ln})\\
-         &=& (J_\alpha)_{nm}\frac{\delta_{ml}}{\omega + \omega_1 - E_m + i\delta}(J_\beta)_{lk}(\frac{\delta_{ln}}{\omega - E_n + i\delta}-\frac{\delta_{ln}}{\omega - E_n - i\delta}))\\
-         &=&\frac{-2\pi i (J_\alpha)_{nm}(J_\beta)_{mn}}{\omega + \omega_1 -E_m + i\delta}\delta(\omega - E_n)
+         &=& (J_\alpha)_{nm}\frac{\delta_{ml}}{\omega + \omega_1 - E_m + i\eta}(J_\beta)_{lk}(\frac{\delta_{ln}}{\omega - E_n + i\eta}-\frac{\delta_{ln}}{\omega - E_n - i\eta}))\\
+         &=&\frac{-2\pi i (J_\alpha)_{nm}(J_\beta)_{mn}}{\omega + \omega_1 -E_m + i\eta}\delta(\omega - E_n)
 \end{eqnarray}
 したがって、
 \begin{eqnarray}
-\int \frac{d\omega}{2\pi}(第二項) = -i\frac{(J_\alpha)_{nm}(J_\beta)_{mn}}{\omega_1-(E_m-E_n)+i\delta}f(E_n)
+\int \frac{d\omega}{2\pi}(第二項) = -i\frac{(J_\alpha)_{nm}(J_\beta)_{mn}}{\omega_1-(E_m-E_n)+i\eta}f(E_n)
 \end{eqnarray}
 同様にして、
 \begin{eqnarray}
-(第三項) = \frac{-2\pi i (J_\alpha)_{nm}(J_\beta)_{mn}}{\omega - \omega_1 -E_n - i\delta}\delta(\omega - E_m)
+(第三項) = \frac{-2\pi i (J_\alpha)_{nm}(J_\beta)_{mn}}{\omega - \omega_1 -E_n - i\eta}\delta(\omega - E_m)
 \end{eqnarray}
 \begin{eqnarray}
-\int \frac{d\omega}{2\pi}(第三項) = i\frac{(J_\alpha)_{nm}(J_\beta)_{mn}}{\omega_1-(E_m-E_n)+i\delta}f(E_m)
+\int \frac{d\omega}{2\pi}(第三項) = i\frac{(J_\alpha)_{nm}(J_\beta)_{mn}}{\omega_1-(E_m-E_n)+i\eta}f(E_m)
 \end{eqnarray}
 であるから、
 \begin{align}
@@ -502,7 +500,7 @@ $\alpha,\beta$について対称化すると、
 \end{eqnarray}
 が示された。
 \section{GQMの半正定値性}
-次に、$GQM$の半正定値性を示そう。前節ではブロッホハミルトニアンの固有状態を用いて解析したが、一般の系ではこの方法は不便である。そこで、この説ではスペクトルに対応する$i(G^{R} - G^{A})$の固有状態$|n\ra$を用いよう。固有値を$A_n$とすれば、前節でも述べたように$A_n\geq 0$である。また、解析しやすくするために、GQMの式を$G^R-G^A$で表そう$(G^Rのみ、またはG^Aのみの項は扱いづらい)$。
+次に、$GQM$の半正定値性を示そう。前節ではブロッホハミルトニアンの固有状態を用いて解析したが、一般の系ではこの方法は不便である。そこで、この説ではスペクトルに対応する$i(G^{R} - G^{A})$の固有状態$|n\ra$を用いよう。固有値を$A_n$とすれば、前節で述べたように$A_n\geq 0$である。また、解析しやすくするために、GQMの式を$G^R-G^A$で表そう$(G^Rのみ、またはG^Aのみの項は扱いづらい)$。
 
 まず、第二項は
 \begin{align}
@@ -564,7 +562,7 @@ h(n,m,\omega,\omega_1) = A_n(\omega)A_m(\omega+\omega_1)\frac{f(\omega)-f(\omega
     {1\over (2\pi)^2}\int dk_xdk_y \mathrm{Tr}(\tilde{g}(k))&\approx& \mathrm{Re}\int_0^\infty {\sigma_{xx}(\omega) + \sigma_{yy}(\omega)\over 2\pi\omega}\nonumber\\
     &=&{1\over (2\pi)^2}\int d\theta_xd\theta_y \mathrm{Tr}(\tilde{g}(\theta))\nonumber\\
     &\geq& {1\over (2\pi)^2}\int d\theta_xd\theta_y |\Omega_{xy}(\theta)|\nonumber\\
-    &\geq& {1\over (2\pi)}|C|
+    &\geq& {1\over 2\pi}|C|
 \end{eqnarray}
 ここで$C$はチャーン数である。ただし、1行目でバーテックス補正を無視しているので不等式は厳密ではないが、相互作用がある場合にもGQMはチャーン絶縁体において大きくなることが期待される。
 \chapter{本研究で扱う模型と理論的手法}
@@ -629,10 +627,10 @@ PHSについては、自由な場合に$\Xi = \sigma_x K$だったことから�
 レーマン表示を用いると、QWZ模型のPHSにより 
 
 \begin{align} 
-G^R_{ab}(\omega,k) &= \displaystyle \sum_n \frac{\la 0|C^{-1}C\ca C^{-1}C |n\ra \la n|C^{-1}C \cbd C^{-1}C| 0\ra}{E_0-E_n + \omega + i\delta } \\
-&+ \frac{\la 0|C^{-1}C\cbd C^{-1}C|n\ra \la n|C^{-1}C \ca C^{-1}C|0\ra}{E_n - E_0 + \omega + i\delta}\\ 
-&=\displaystyle \sum_n \frac{\la 0|\cbmd |n\ra \la n| \cma | 0\ra}{E_0-E_n + \omega + i\delta } \\
-&+ \frac{\la 0|\cma |n\ra \la n| \cbmd |0\ra}{E_n - E_0 + \omega + i\delta}\\
+G^R_{ab}(\omega,k) &= \displaystyle \sum_n \frac{\la 0|\Ch^{-1}\Ch\ca \Ch^{-1}\Ch |n\ra \la n|\Ch^{-1}\Ch \cbd \Ch^{-1}\Ch| 0\ra}{E_0-E_n + \omega + i\eta } \\
+&+ \frac{\la 0|\Ch^{-1}\Ch\cbd \Ch^{-1}\Ch|n\ra \la n|\Ch^{-1}\Ch \ca \Ch^{-1}\Ch|0\ra}{E_n - E_0 + \omega + i\eta}\\ 
+&=\displaystyle \sum_n \frac{\la 0|\cbmd |n\ra \la n| \cma | 0\ra}{E_0-E_n + \omega + i\eta } \\
+&+ \frac{\la 0|\cma |n\ra \la n| \cbmd |0\ra}{E_n - E_0 + \omega + i\eta}\\
 &=-G^{R*}_{ba}(-\omega,-k)
 \end{align} 
 が成り立つことが分かる。同様にして、
@@ -684,18 +682,18 @@ G^R(\omega,k)_{bb}&=G^R(\omega,-k)_{bb}
     -G^{-1}_{ab}(i\omega,k)=H(k) + \Sigma(i\omega=0,k)
 \end{eqnarray}
 もエルミートである。そこで、この有効ハミルトニアン$H_{\mathrm{eff}}(k) = H(k) + \Sigma(i\omega=0,k)$に対して
-、自由な系で確立された方法に基づいたトポロジカル不変量が定義できる。以上の方法は、自己エネルギーの周波数依存性について詳しく知る必要が無いため、非常にトポロジーの判定手法であり、しかも判定結果も正しいことが知られている。
+、自由な系で確立された方法に基づいたトポロジカル不変量が定義できる。以上の方法は、自己エネルギーの周波数依存性について詳しく知る必要が無いため、非常に簡単なトポロジーの判定手法であり、しかも判定結果も正しいことが知られている。
 
 本研究においては、松原グリーン関数の自己エネルギーではなく遅延グリーン関数の自己エネルギーを用いた。一般に、松原グリーン関数と遅延グリーン関数には
 
 \begin{eqnarray}
-    G_{ab}(i\omega,k) \overset{i\omega\to \omega+i\delta}{\Longrightarrow}G^{R}_{ab}(\omega,k)
+    G_{ab}(i\omega,k) \overset{i\omega\to \omega+i\eta}{\Longrightarrow}G^{R}_{ab}(\omega,k)
 \end{eqnarray}
 の関係があるので、
 \begin{eqnarray}
-    G^{R}_{ab}(\omega=0,k)=G_{ab}(i\delta,k)
+    G^{R}_{ab}(\omega=0,k)=G_{ab}(i\eta,k)
 \end{eqnarray}
-が成り立つ。数値計算においては$T=0$に到達することは出来ないから、1番絶対値が小さい松原周波数は有限となる。それを上式の$i\delta$と見なせば、遅延グリーン関数からトポロジーを評価出来ることが分かる。
+が成り立つ。数値計算においては$T=0$に到達することは出来ないから、1番絶対値が小さい松原周波数は有限となる。それを上式の$i\eta$と見なせば、遅延グリーン関数からトポロジーを評価出来ることが分かる。
 こうして遅延グリーン関数から得た有効ハミルトニアン
 \begin{eqnarray}
     H_{\mathrm{eff}}(k) = H(k) + \Sigma^{R}(\omega=0,k)
@@ -707,7 +705,7 @@ W(k_x) =\langle u(k_x,2\pi)| \displaystyle \prod_{n=1}^{N}P(k_x,2\pi n/N) |u(k_x
 を計算することでトポロジーを判定した。ただし、$|u(k_x,k_y)\rangle$ は$H_{\mathrm{eff}}(k)$の占有された固有状態であり、 $P(\bk)=|u(k_x,k_y)\rangle\langle u(k_x,k_y)|$ は射影演算子である。射影演算子の積は$k_y$が左から右に行くにつれて増加するように並べる。また、数値計算においては$N$ は十分大きく取る必要がある。Wilson Loopの巻き付き数が有限であればその系はトポロジカルに非自明であり、巻き付き数が$0$なら自明であると分かる~\cite{asboth2016short,PhysRevB.99.045140,PhysRevB.100.195135}。
 
 \section{動的平均場理論}%DMFT/NRG
-この節では、本研究において自己エネルギーを得る際に用いた手法である動的平均場理論(Dynamical Mean-Field Theory,DMFT)について文献\cite{RevModPhys.68.13}に基づいて説明する。DMFTは端的に言えば自己エネルギーの周波数依存性も取り込める平均場近似であり、イジング模型などで適用される静的な平均場とは異なる。しかし、1つのサイトに着目して自己無撞着方程式を得るのは同じであるので、まずはイジング模型の平均場近似について解説する。
+この節では、本研究において自己エネルギーを得る際に用いた手法である動的平均場理論(Dynamical Mean-Field Theory,DMFT)について文献\cite{RevModPhys.68.13}に基づいて説明する。DMFTは端的に言えば自己エネルギーの周波数依存性も取り込める平均場近似であり、イジング模型などで適用される静的な平均場とは異なる。しかし、1つのサイトに着目して自己無撞着方程式を得る点は同じであるので、まずはイジング模型の平均場近似について解説する。
 
 イジング模型のハミルトニアンは
 \begin{eqnarray}
@@ -744,18 +742,87 @@ DMFTにおいては、格子系を不純物模型にマップする。不純物�
 具体的には、以下の手続きを繰り返すことになる;
 (i)格子模型における原点のグリーン関数$\tilde{G}_{0}(\omega)=\sum_{k}G(\omega,k)$を求める。(ii)これを$U=0$での不純物サイトのグリーン関数であるとしてアンダーソン模型を解き、自己エネルギー$\Sigma(\omega)$を得る。(iii)$\Sigma(\omega)$が格子系における原点のグリーン関数の自己エネルギーだとして、格子系の原点グリーン関数$G(\omega)$を計算する。(iv)$G(\omega)$の自由な部分に相当する$\tilde{G}(\omega)=1/\Bigl(G(\omega)^{-1}+\Sigma(\omega)\Bigr)$を計算する。(v)$\tilde{G}(\omega)$を再び$U=0$での不純物サイトのグリーン関数であるとしてアンダーソン模型を解く。
 
-この手続き(iii)においては、相互作用がある不純物模型を解かなければならない。その手法としてはいくつかの方法が提案されているが、本研究においては数値繰り込み群(NRG)を用いた。以下ではNRGについて、文献\cite{RevModPhys.80.395}に基づいて簡単に説明する。
+この手続き(iii)においては、相互作用がある不純物模型を解かなければならない。その手法としてはいくつかの方法が提案されているが、本研究においては数値繰り込み群(Numerical Renormalization Group,NRG)を用いた。以下では、NRGについて文献\cite{RevModPhys.80.395}に基づいて簡単に説明する。
+
+NRGは量子論的不純物模型を非摂動的に扱える手法であり、歴史的にはWilsonによって近藤模型に適用され、高温領域と低温領域のクロースオーバー領域での計算が初めてなされた。その後、アンダーソン模型など近藤模型以外の模型にも適用されている。NRGのアイデアは、bathの伝導帯のエネルギー準位を対数的に離散化し、不純物模型を半無限スピン鎖の模型にマップするというものである。以下では、簡単のため伝導帯のエネルギーは区間$[-1,1]$の間にあるとする。
+
+この区間を離散化するために、パラメータ$\Lambda > 1$を導入しする。$\Lambda$はNRG disctretization parameterと呼ばれる。離散化されたエネルギーは$\{\pm\Lambda^n\}_{n=0}^{\infty}$で与えられる。$\Lambda\to 1$の極限で連続的なエネルギースペクトルが回復するが、低エネルギーの様子を調べるのに必要な$n$が大きくなってしまうという問題がある。実際の計算では$\Lambda=2$程度で良い精度が出ることが知られており、本研究においても$\Lambda=2$とした。
+
+具体的な手続きは省略するが、アンダーソン模型はいくつかの近似を用いることで以下のスピン鎖模型に置き換えられる;
+\begin{eqnarray}
+    H_{\mathrm{spin}}&=H_{\mathrm{imp}} + \sqrt{\frac{\xi_0}{\pi}}\sum_n \Bigl(c^{\dagger}_{o\sigma}b_{o\sigma}+h.c\Bigr) \\
+    &+ \sum_{\sigma}\sum_{n=0}^{\infty}\epsilon_n b_{n\sigma}^{\dagger}b_{n\sigma} + t_n\Bigl(b_{n+1\sigma}^{\dagger}b_{n\sigma}+h.c\Bigr)
+\end{eqnarray}
+ただし、
+$\xi_0$は定数で、$\{b_{n\sigma}\}_{n}$は伝導帯電子の生成消滅演算子の線形結合で定義される新たな生成消滅演算子である。
+
+数値計算においては無限のスピン鎖$(n=\infty)$は実装できないため、$n$の最大値は有限である。$n$の最大値$N$を一つ固定する毎にハミルトニアン$H_{\mathrm{spin},N}$が定まるので、ハミルトニアンの列$\{H_{\mathrm{spin},N}\}_N$が定義できる。これを逐次的に対角化するのがNRGの手続きである。$N$を増やすと固有状態の数が増加していってしまうが、これに対しては自然数$N_s$を一つ固定して、常に下から$N_s$個のエネルギーのみを取り出す。本研究においては、$n$の最大値は30とし、$N_s=1500$とした。
+
 \chapter{数値計算結果}
 \section{$U=0$の場合}
+\begin{figure}
+\centering
+\includegraphics[width=0.47\columnwidth]{Fig1.pdf}
+\includegraphics[width=0.47\columnwidth]{Fig2.pdf}
+\caption{(右図)$U=0,M=1.7$での既存の量子計量(四角)とGQM(丸)の波数依存性。(左図)$U=0$での既存の量子計量の積分値(四角)とGQMの積分値(丸)の$M$依存性。}
+\label{fig:qmcompare}
+\end{figure}
+GQMの$U$依存性を調べる前に、$U=0$においてGQMが式~(\ref{existing})で与えられる既存の定義と一致することを確かめる。本研究を通して、GQMの積分では一番小さい$\omega_1$を$\omega_{1\mathrm{min}} = 0.02$とし、波数は区間$[-\pi,\pi]$を100分割して計算した。また、グリーン関数に含まれる微小な$\eta$は$\eta = 0.05$とした。フェルミ分布関数に含まれる温度は$T=0.01$としているが、今回の模型では$T=0$とみなしてよい。 
+
+図$\ref{fig:qmcompare}$がその計算結果である。右図は$M=1.7$での量子計量の波数依存性であり、左図は量子計量の積分値の$M$依存性である。ただし、左図では既存の量子計量の相転移点における発散を防ぐため、式~(\ref{existing})の分母を$(E_n-E_m)^2+\eta^2$で置き換えた。この$\eta$はグリーン関数中の$\eta$と同じ値である。両図をみると、GQMは既存の量子計量とよく一致していることが分かる。完全に一致していない理由としては、$(E_n-E_m)^2+\eta^2$と置き換えていることの他に、以下の理由が考えられる;(i)GQMの計算においては、$\omega_{1\mathrm{min}}$が有限であるので発散を捉えることが出来ない。つまり、相転移点において既存の定義よりも小さくなると考えられる(ii)本来は無限小であるべき$\eta$が有限であることによって、ギャップが少し小さくなる。すると、$\sigma_{\alpha_\beta}(\omega_1,\bk)$が小さい$\omega_1$に対して有限になるので、GQMの式(\ref{defGQM})中の$1/\omega_1$ によって、GQMが大きくなる。(iii)有限温度の効果によって式(\ref{fnfm})の$|f(E_n)-f(E_m)|$が小さくなるので、GQMが少し小さくなる。
+
+このような違いはあるが、両者は以下の共通の振る舞いを示す; 臨界点($M=0,\;2$)において、積分値は発散的になる。この発散は、臨界点においてDCの縦伝導度が有限になることに起因する。また、文献~\cite{PhysRevB.104.045103}において指摘された不等式$\detg \geq \pi |Ch| = \pi$がトポロジカル相において成り立っていることが分かる。さらに、積分値はトポロジカル相において大きく、自明相において小さくなる傾向があることがわかる。(文献~\cite{PhysRevB.104.045103}では様々なチャーン絶縁体において$\detg$が同じ振る舞いを示すことが数値的に確かめられている。)
 \section{$U>0$の場合}
+次に、$U>0$でのGQMの計算結果を示す。$U$が増加するに伴い、系はトポロジカル相転移を起こすと期待される。これは以下のように理解出来る: 自己エネルギーの効果によってフェルミエネルギー付近のバンド構造は変化し、$a$サイトと$b$サイトのポテンシャル差$M$は$M_{\mathrm{eff}}=M+(\mathrm{Re}\Sigma^R(\omega = 0)_{AA}-\mathrm{Re}\Sigma^R(\omega = 0)_{BB})/2$となる。ただし、$\mathrm{Re}\Sigma^R(\omega = 0)_{AA}$ と $\mathrm{Re}\Sigma^R(\omega = 0)_{BB}$は自己エネルギーの対角成分の実部である。したがって、$M_{\mathrm{eff}}=\{-2,0,2\}$において系はトポロジカル相転移を起こすと予想できる。
+
+実際、$M=1.5$において系はトポロジカル相から自明相へのトポロジカル相転移を起こす。これは図~\ref{fig:M=1.5_Wilson_GQM}に示されているWilson Loopの結果から分かる。Wilson Loopの巻き付き数は$U < U_c \approx 3.5$のとき$1$であり、$U > U_c$では$0$である。
+
+図~\ref{fig:M=1.5_Wilson_GQM}の右図では$M=1.5$におけるGQMの$U$依存性が示されている。この図から、$\int \mathrm{Tr}(g)dk_xdk_y$ と $\int \sqrt{\mathrm{det}(g)}dk_xdk_y$が$U=$の場合と同じ振る舞いを示していると分かる。$\trg$の発散的な振る舞いは相互作用がある系にも現れている。興味深いことに、不等式$\detg \geq \pi$ は相互作用があるトポロジカル相においても成り立っている。さらに、 $\int \mathrm{Tr}(g)dk_xdk_y$ と $\int \sqrt{\mathrm{det}(g)}dk_xdk_y$ はトポロジカル相において大きくなる傾向があると分かる。従って、これらの量は相互作用がある系でもトポロジーを推定するのに役立つ。 
+\begin{figure}
+\centering
+\includegraphics[width=0.47\columnwidth]{Fig3.pdf}
+\includegraphics[width=0.47\columnwidth]{Fig4.pdf}
+\caption{(右図)$M=1.5$における$W(k_x)$の位相の$k_x$依存性。$U=3.4$(青点)においてはWilson Loopの巻き付き数が$1$であるが、$U=3.5$(赤点)では巻き付き数が$0$である。(左図)$M=1.5$における$\trg$(青線) と $\detg$(赤線)の$U$依存性。相転移点においては、有効的なポテンシャル差(緑線)は$M_{\mathrm{eff}} = M+(\mathrm{Re}\Sigma^R(\omega = 0)_{AA}-\mathrm{Re}\Sigma^R(\omega = 0)_{BB})/2 = 2$となり、自由な系の場合と同じ値であると分かる。化学ポテンシャルは$\mu = U/2$である。}
+\label{fig:M=1.5_Wilson_GQM}
+\end{figure}
+
+次に、GQMの半正定値性を確かめる。半正定値性を調べるには、$\mathrm{Tr}g(\bk)$ と $\mathrm{det}g(\bk)$見れば良い(図~\ref{fig:trmapM=1.5})。2次元系においては、半正定値性は任意の$\bk$に対して$\mathrm{Tr}g(\bk) \geq 0$ と$\mathrm{det}g(\bk)\geq 0$が成り立つことと同値であることに注意。
+
+図~\ref{fig:trmapM=1.5}を見ると、GQMはBZの$M$点($k_x = k_y = \pi$)の近くで大きくなることが分かる。これは図~\ref{fig:spectral}に示されているスペクトルから理解出来る。エネルギーギャップが$\mathrm{M}$点近くで小さいことが分かる。したがって、$\sigma_{\alpha\beta}(\omega_1,\bk)$は小さい$\omega_1$に対して有限になり、$1/\omega_1$の寄与でGQMが大きくなることが分かる。
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{Fig5.pdf}
+\caption{$\mathrm{Tr}g(\bk)$ と $\mathrm{det}g(\bk)$の波数依存性。GQMの半正定値性が成り立っていると分かる。この図では$M=1.5,U=2.2,\mu = U/2$である。}
+\label{fig:trmapM=1.5}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{Fig6.pdf}
+\caption{スペクトル関数のトレース$\mathrm{Tr}A(\omega,\bk)=-\frac{1}{\pi}\text{Tr}\;\text{Im}G^R(\omega,\bk)$を示す。エネルギーギャップが$\mathrm{M}$点で小さくなることが分かる。スペクトルがぼやけているのは自己エネルギーの虚部の影響である。また、系のPHSと反転対称性から$\mathrm{Tr}A(\omega,\bk)= \mathrm{Tr}A(-\omega,\bk)$が成り立っていることが分かる。この図では$M=1.5,U=2.2,\mu = U/2$。}
+\label{fig:spectral}
+\end{figure}
+
+最後に、$U=2.2$ に固定し、$M$を変えて同じ解析を行う。$M$が増えるに従い、系はトポロジカル相転移を起こす。図\ref{fig:U=2.2_Wilson_GQM}に示されているWilson Loopの結果から、$M\approx 1.69$においてトポロジカル相から自明相への相転移が起きていることが分かる。相互作用の効果によって、相転移が起きる$M$の値は自由な系における値よりも小さくなっている。
+
+それに対応したGQMの$M$依存性も図\ref{fig:U=2.2_Wilson_GQM}の右に示されている。GQMは転移点で再び発散的な振る舞いを示している。さらに、この発散前後の値を比べることで、$M<1.69$ではトポロジカル相だと推測されるが、この結論はWilson Loopの結果と符合する。また、不等式$\detg \geq \pi$はこのパラメータ領域でも成り立っている。
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.47\columnwidth]{Fig7.pdf}
+\includegraphics[width=0.47\columnwidth]{Fig8.pdf}
+\caption{(左図)$U=2.2$における$W(k_x)$の位相の$k_x$依存性。$M=1.67$(青点)においてはWilson Loopの巻き付き数が$1$であるが、$M=1.69$(赤点)では巻き付き数が$0$である。(左図)式(\ref{defGQM})から計算した$\trg$(青線) と $\detg$(赤線)の$M$依存性。$M_{\mathrm{eff}}=2$のときにトポロジカル相転移が起きている。パラメータは$U=2.2,\mu = U/2$}
+\label{fig:U=2.2_Wilson_GQM}
+\end{figure}
+
 \chapter{結論}
-本研究では、1粒子を用いてBZ上の一般化された量子計量(GQM)を定義し、相互作用がある場合にも量子計量を計算できるようにした。GQMは系の光学伝導度に基づいている。相互作用の効果は1粒子グリーン関数の自己エネルギーを通して取り込まれている。我々は、$T=0$の自由な系においてGQMが既存の量子計量に一致することと、GQMが半正定値であること、つまりGQMが計量として機能することを解析的に示した。
+本研究では、1粒子グリーン関数を用いてBZ上の一般化された量子計量(GQM)を定義し、相互作用がある場合にも量子計量を計算できるようにした。GQMは系の光学伝導度に基づいている。相互作用の効果は1粒子グリーン関数の自己エネルギーを通して取り込まれている。我々は、$T=0$の自由な系においてGQMが既存の量子計量に一致することと、GQMが半正定値であること、つまりGQMが計量として機能することを解析的に示した。
 
 数値計算においては、チャーン絶縁体のtoy model であるQWZ模型に斥力相互作用を加えた系に対して、GQMを計算した。自己エネルギーを得る際はDMFTとNRGを用いた。また、トポロジーを判定する際には有効ハミルトニアンのWilson Loopを用いた。
 
-Wilson Loopによる解析結果から、我々はGQMがトポロジカル相において大きくなり自明相において小さくなる傾向があることが分かった。さらに、量子体積とチャーン数の間の不等式は相互作用がある場合にも成り立っていることを確かめた。したがって、GQMは自由な系だけでなく相互作用がある系においてもトポロジーとの繋がりがあると分かった。
+Wilson Loopによる解析結果から、GQMがトポロジカル相において大きくなり、自明相において小さくなる傾向があることが分かった。さらに、量子体積とチャーン数の間の不等式は相互作用がある場合にも成り立っていることを確かめた。したがって、GQMは自由な系だけでなく相互作用がある系においてもトポロジーとの繋がりがあると分かった。
 \chapter*{謝辞}
-本研究は、京都大学大学院理学研究科　物理学・宇宙物理学専攻、物理第一教室　凝縮系理論グループにおいて、Robert Peters講師のご指導のもと行われたものです。私自身は心配性な性格から就職活動に時間を割きすぎてしまい、研究の進捗がなかなか生まれない中でも、辛抱強く見守ってくださったPeters講師に感謝します。また、量子計量をグリーン関数で記述するというアイデアを与えてくださったこと、私の下手な英語の公正を丁寧に行ってくれたことにも、心から感謝します。同研究グループの川上則雄教授、柳瀬陽一教授、池田隆介准教授、吉田恒也准教授、手塚真樹助教、大同暁人助教の各先生方にも、凝縮系セミナーを通じて沢山の刺激をもらいました。研究室の先輩方、同期、後輩の皆さんにもよくしていただき、楽しい大学院生活を送ることが出来ました。また、修士1回生の何も分からなかった私に、数値計算や研究テーマについて多くのアドバイスを下さった研究室OBの道下さんに深く感謝します。さらに、学会の参加などで毎回お世話になった秘書の方々、そしてOAとして雇っていただいたiCeMS藤田グループの藤田さん、松田さん、秘書の里中さんにも、御礼を申し上げます。
+本研究は、京都大学大学院理学研究科　物理学・宇宙物理学専攻、物理第一教室　凝縮系理論グループにおいて、Robert Peters講師のご指導のもと行われたものです。私自身は心配性な性格から就職活動に時間を割きすぎてしまい、研究の進捗がなかなか生まれない中でも、辛抱強く見守ってくださったPeters講師に感謝します。また、量子計量をグリーン関数で記述するというアイデアを与えてくださったこと、私の下手な英語の校正を丁寧に行ってくれたことにも、心から感謝します。同研究グループの川上則雄教授、柳瀬陽一教授、池田隆介准教授、吉田恒也准教授、手塚真樹助教、大同暁人助教の各先生方にも、凝縮系セミナーを通じて沢山の刺激をもらいました。研究室の先輩方、同期、後輩の皆さんにもよくしていただき、楽しい大学院生活を送ることが出来ました。また、修士1回生の何も分からなかった私に、数値計算や研究テーマについて多くのアドバイスを下さった研究室OBの道下さんに深く感謝します。さらに、学会の参加などで毎回お世話になった秘書の方々、そしてOAとして雇っていただいたiCeMS藤田グループの藤田さん、松田さん、秘書の里中さんにも、御礼を申し上げます。
 最後に、就職活動と大学院の研究に追われて精神的に切迫した状態の私を、常に支えてれた家族に感謝します。
 \bibliography{shuron.bib}
 \end{document}
